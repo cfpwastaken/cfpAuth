@@ -5,13 +5,6 @@ const r = new Router();
 
 export default r
 
-process.env.DISCORD_CLIENT_ID = "1055519863080230982"
-process.env.DISCORD_CLIENT_SECRET = "1mdaCZmzPjl4l8E0f09zOUNcJDze5l38"
-process.env.DISCORD_TOKEN = "MTA1NTUxOTg2MzA4MDIzMDk4Mg.GWMoZm.bTmZfeSOo2jZze9nzF3Dzt4SX6UfbcxZTFhzWU"
-process.env.DISCORD_REDIRECT_URI = "http://localhost:8080/discord/redirect"
-process.env.APPNAME = "Cfp"
-process.env.DISCORD_VERIFY_LINK = "https://discord.com/api/oauth2/authorize?client_id=1055519863080230982&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fdiscord%2Fredirect&response_type=code&scope=role_connections.write"
-
 r.get("/", (req, res) => {
 	res.redirect(process.env.DISCORD_BOT_LINK)
 })
