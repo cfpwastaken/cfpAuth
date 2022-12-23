@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{appname}</title>
+
+  <script src="/cookies.js"></script>
+
+  <link rel="stylesheet" href="/ui.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+
+  <link rel="shortcut icon" href="favicon.ico" id="icon">
+
+  <script type="module" defer src="/js/settings.js"></script>
+
+  <style>
+    html, body, #main_content, #navbar {
+      background-color: #1D1D1D !important;
+    }
+
+    .setting-label {
+      font-size: 1.3em;
+    }
+
+    #main_content {
+      display: flex;
+      gap: 15px;
+			flex-wrap: wrap;
+    }
+
+    #authmethods,
+		#devices {
+      background-color: #0C0C0C !important;
+      border-radius: 10px;
+      padding: 10px;
+      width: 500px;
+      display: flex;
+      gap: 5px;
+      flex-direction: column;
+    }
+
+    .authmethod svg {
+      width: 35px;
+      height: 35px;
+    }
+
+    .authmethod span {
+      font-size: 1.2em;
+    }
+
+    .authmethod {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .authmethod .device {
+      color: #acacac;
+      font-style: italic;
+    }
+
+    .authmethod button {
+      margin-left: auto;
+      width: 70px;
+    }
+
+    button {
+      border-style: solid;
+      border-radius: 5px;
+      border-width: 0;
+    }
+
+    .flex-right {
+      margin-left: auto;
+    }
+
+    .butn-blue {
+      background-color: #4A72FF;
+      color: white;
+    }
+
+    .butn-red {
+      background-color: #FF4A4A;
+      color: white;
+    }
+
+    #account-preview {
+      display: flex;
+      margin-bottom: 5px;
+    }
+
+    #account-preview-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #account-preview-name {
+      font-size: 1.3em;
+    }
+
+    #account-preview-bio,
+		#account-preview-bio-quotes {
+      font-size: 1.2em;
+    }
+
+    .account-option {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .account-option svg {
+      width: 35px;
+      height: 35px;
+    }
+
+    .account-option input {
+      width: fit-content;
+    }
+
+		#account-preview-name {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+		}
+
+    #account-preview-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #account-preview-avatar-options svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    input {
+      background-color: #0E0E0E;
+      color: white;
+      font-size: 1.1em;
+      border-style: solid;
+      border-radius: 5px;
+      border-width: 0;
+    }
+
+    .account-option span {
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div id="darken">
+    <div id="dialog-phone" class="dialog">
+      <div class="dialog-content">
+        <h2>Add Phone</h2>
+        <p>Download Google Authenticator on your phone and scan this QR Code:</p>
+        <img id="dialog-phone-qr">
+        <p>Enter the code below to confirm:</p>
+        <input id="dialog-phone-code" type="text" placeholder="Code">
+        <p>And name this device:</p>
+        <input id="dialog-phone-device" type="text" placeholder="Device">
+      </div>
+      <div class="dialog-buttons">
+        <button id="dialog-phone-ok">Ok</button>
+      </div>
+    </div>
+  </div>
+  <div id="navbar">
+    <a href="/user"><img class="avatar"></a>
+  </div>
+  <div id="main_content">
+    <div class="setting">
+      <p class="setting-label">Authentication:</p>
+      <div id="authmethods">
+        <div class="authmethod" id="authmethod-pw">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.25 5A3.25 3.25 0 0 0 2 8.25v7.5A3.25 3.25 0 0 0 5.25 19h13.5A3.25 3.25 0 0 0 22 15.75v-7.5A3.25 3.25 0 0 0 18.75 5H5.25Zm1.03 5.22.72.72.72-.72a.75.75 0 1 1 1.06 1.06l-.719.72.72.718A.75.75 0 1 1 7.72 13.78L7 13.06l-.72.72a.75.75 0 0 1-1.06-1.06l.72-.72-.72-.72a.75.75 0 0 1 1.06-1.06Zm5.5 0 .72.72.72-.72a.75.75 0 1 1 1.06 1.06l-.719.72.72.718a.75.75 0 1 1-1.061 1.061l-.72-.719-.72.72a.75.75 0 1 1-1.06-1.06l.72-.72-.72-.72a.75.75 0 0 1 1.06-1.06Zm3.97 4.03a.75.75 0 0 1 .75-.75h1.75a.75.75 0 0 1 0 1.5H16.5a.75.75 0 0 1-.75-.75Z" fill="#fff"/></svg>
+          <span id="label-password">Password</span>
+          <input type="password" id="input-password" style="display: none; width: 10em; background-color: #1D1D1D;">
+          <div class="progress-ring spinner-indeter" style="width: 30px; height: 30px; display: none;" id="spinner-pw">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="ring">
+              <circle class="static" cx="50%" cy="50%" r="43.75%"></circle>
+              <circle class="dynamic" cx="50%" cy="50%" r="43.75%"></circle>
+            </svg>
+          </div>
+          <button class="butn-blue" id="button-change-pw">Change</button>
+        </div>
+        <div class="authmethod">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.883 3.007 12 3a1 1 0 0 1 .993.883L13 4v7h7a1 1 0 0 1 .993.883L21 12a1 1 0 0 1-.883.993L20 13h-7v7a1 1 0 0 1-.883.993L12 21a1 1 0 0 1-.993-.883L11 20v-7H4a1 1 0 0 1-.993-.883L3 12a1 1 0 0 1 .883-.993L4 11h7V4a1 1 0 0 1 .883-.993L12 3l-.117.007Z" fill="#fff"/></svg>
+          <span>Add</span>
+          <div class="flex-right">
+            <button class="butn-blue" id="add-phone">Phone</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="setting">
+      <p class="setting-label">Account:</p>
+      <div id="account-preview">
+        <div id="account-preview-avatar">
+          <img class="avatar" alt="" width="70px">
+          <div id="account-preview-avatar-options">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2Zm0 5a.75.75 0 0 0-.743.648l-.007.102v3.5h-3.5a.75.75 0 0 0-.102 1.493l.102.007h3.5v3.5a.75.75 0 0 0 1.493.102l.007-.102v-3.5h3.5a.75.75 0 0 0 .102-1.493l-.102-.007h-3.5v-3.5A.75.75 0 0 0 12 7Z" fill="#fff"/></svg>
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2Zm3.53 6.47-.084-.073a.75.75 0 0 0-.882-.007l-.094.08L12 10.939l-2.47-2.47-.084-.072a.75.75 0 0 0-.882-.007l-.094.08-.073.084a.75.75 0 0 0-.007.882l.08.094L10.939 12l-2.47 2.47-.072.084a.75.75 0 0 0-.007.882l.08.094.084.073a.75.75 0 0 0 .882.007l.094-.08L12 13.061l2.47 2.47.084.072a.75.75 0 0 0 .882.007l.094-.08.073-.084a.75.75 0 0 0 .007-.882l-.08-.094L13.061 12l2.47-2.47.072-.084a.75.75 0 0 0 .007-.882l-.08-.094-.084-.073.084.073Z" fill="#fff"/></svg>
+          </div>
+        </div>
+        <div id="account-preview-text">
+          <span id="account-preview-name"></span>
+          <span id="account-preview-bio-quotes">„<span id="account-preview-bio"></span><input id="account-preview-bio-edit" style="display: none;">“</span>
+        </div>
+      </div>
+      <div class="account-option">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7c1.714 0 2-1.34 2-2.444C14 3.45 13.262 1.5 12 1.5s-2 1.951-2 3.056C10 5.66 10.286 7 12 7ZM3.5 10.25A2.25 2.25 0 0 1 5.75 8h12.5a2.25 2.25 0 0 1 2.25 2.25v.875l-3.634 2.726a1.25 1.25 0 0 1-1.384.077l-2.04-1.2a2.75 2.75 0 0 0-2.884.06l-1.761 1.136a1.25 1.25 0 0 1-1.35.003L3.5 11.408V10.25Z" fill="#fff"/><path d="M3.5 13.188V18.5h-.75a.75.75 0 0 0 0 1.5h18.5a.75.75 0 0 0 0-1.5h-.75V13l-2.734 2.05a2.75 2.75 0 0 1-3.044.171l-2.04-1.2a1.25 1.25 0 0 0-1.311.027l-1.76 1.136a2.75 2.75 0 0 1-2.971.008L3.5 13.187Z" fill="#fff"/></svg>
+        <span id="label-birthday">Birthday: </span>
+        <input type="date" name="" id="account-birthday">
+      </div>
+      <div class="account-option">
+				<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6.25A3.25 3.25 0 0 1 6.25 3h11.5A3.25 3.25 0 0 1 21 6.25v11.5A3.25 3.25 0 0 1 17.75 21H6.25A3.25 3.25 0 0 1 3 17.75V6.25Zm9.75 1.5a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" fill="#fff"/></svg>
+				<span id="label-created">Created: </span>
+				<input type="date" id="account-created" disabled>
+      </div>
+    </div>
+    <div class="setting">
+      <p class="setting-label">Devices:</p>
+      <div id="devices">
+        <div class="authmethod">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 12a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11ZM13.75 2A2.25 2.25 0 0 1 16 4.25v6.924A6.503 6.503 0 0 0 11.02 18H8.75a.75.75 0 0 0-.102 1.493l.102.007h2.5l.062-.003A6.496 6.496 0 0 0 12.81 22L6.25 22A2.25 2.25 0 0 1 4 19.75V4.25A2.25 2.25 0 0 1 6.25 2h7.5Zm1.343 12.966-.07.058-.057.07a.5.5 0 0 0 0 .568l.058.07 1.77 1.769-1.768 1.766-.057.07a.5.5 0 0 0 0 .568l.057.07.07.057a.5.5 0 0 0 .568 0l.07-.057 1.766-1.767 1.77 1.769.069.058a.5.5 0 0 0 .568 0l.07-.058.057-.07a.5.5 0 0 0 0-.568l-.057-.07-1.77-1.768 1.772-1.77.058-.069a.5.5 0 0 0 0-.569l-.058-.069-.069-.058a.5.5 0 0 0-.569 0l-.069.058-1.772 1.77-1.77-1.77-.068-.058a.5.5 0 0 0-.493-.043l-.076.043Z" fill="#fff"/></svg>
+          <span id="label-logout">Log out all devices</span>
+          <button class="butn-red" id="button-logout">Log out</button>
+        </div>
+        <!-- <div class="authmethod">
+					<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.75 2A2.25 2.25 0 0 1 18 4.25v15.5A2.25 2.25 0 0 1 15.75 22h-7.5A2.25 2.25 0 0 1 6 19.75V4.25A2.25 2.25 0 0 1 8.25 2h7.5Zm0 1.5h-7.5a.75.75 0 0 0-.75.75v15.5c0 .414.336.75.75.75h7.5a.75.75 0 0 0 .75-.75V4.25a.75.75 0 0 0-.75-.75Zm-2.501 14a.75.75 0 0 1 .002 1.5l-2.5.004a.75.75 0 0 1-.002-1.5l2.5-.004Z" fill="#fff"/></svg>
+					<span>Samsung Galaxy A51 on Firefox</span>
+          <button class="butn-red" id="button-logout">Log out</button>
+        </div>
+        <div class="authmethod">
+					<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.75 16.5h18.5a.75.75 0 0 1 .101 1.493L21.25 18H2.751a.75.75 0 0 1-.102-1.494l.102-.006h18.498H2.751ZM18.25 5c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 18.25 16H5.75A1.75 1.75 0 0 1 4 14.25v-7.5C4 5.784 4.783 5 5.75 5h12.5Zm0 1.5H5.75a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z" fill="#fff"/></svg>
+					<span>Windows 11 Laptop on Edge</span>
+          <button class="butn-red" id="button-logout">Log out</button>
+        </div>
+        <div class="authmethod">
+					<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.75 22a.75.75 0 0 1-.102-1.493l.102-.007h1.749v-2.498H4.25a2.25 2.25 0 0 1-2.245-2.096L2 15.752V5.25a2.25 2.25 0 0 1 2.096-2.245L4.25 3h15.499a2.25 2.25 0 0 1 2.245 2.096l.005.154v10.502a2.25 2.25 0 0 1-2.096 2.245l-.154.005h-4.25V20.5h1.751a.75.75 0 0 1 .102 1.494L17.25 22H6.75Zm7.248-3.998h-4l.001 2.498h4l-.001-2.498ZM19.748 4.5H4.25a.75.75 0 0 0-.743.648L3.5 5.25v10.502c0 .38.282.694.648.743l.102.007h15.499a.75.75 0 0 0 .743-.648l.007-.102V5.25a.75.75 0 0 0-.648-.743l-.102-.007Z" fill="#fff"/></svg>
+					<span>Ubuntu Desktop on Chrome</span>
+          <button class="butn-red" id="button-logout">Log out</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

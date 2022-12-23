@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{appname}</title>
+	<!-- <link rel="stylesheet" href="/css/style.min.css">
+	<link rel="stylesheet" href="/css/login.min.css"> -->
+	<link rel="stylesheet" href="/ui.css">
+	<script src="/cookies.js"></script>
+	<script>
+		if(hasCookie("uuid")) {
+			window.location.href = "/";
+		}
+	</script>
+	<style>
+		body {
+			margin: 0;
+			margin-top: 5px;
+			margin-bottom: 10px;
+			height: calc(100vh - 15px);
+		}
+
+		.container {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			height: 100%;
+			text-align: center;
+		}
+
+		#login-container {
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		#register {
+			justify-content: flex-end;
+		}
+
+		#register p {
+			margin: 0;
+			margin-bottom: 5px;
+		}
+
+		input {
+			text-align: center;
+		}
+
+		.shake {
+			animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+		}
+
+		@keyframes shake {
+			0% {
+				transform: translateX(0);
+			}
+			10% {
+				transform: translateX(-10px);
+			}
+			20% {
+				transform: translateX(10px);
+			}
+			30% {
+				transform: translateX(-10px);
+			}
+			40% {
+				transform: translateX(10px);
+			}
+			50% {
+				transform: translateX(-10px);
+			}
+			60% {
+				transform: translateX(10px);
+			}
+			70% {
+				transform: translateX(-10px);
+			}
+			80% {
+				transform: translateX(10px);
+			}
+			90% {
+				transform: translateX(-10px);
+			}
+			100% {
+				transform: translateX(0);
+			}
+		}
+	</style>
+
+	<meta content="{appname}" property="og:title">
+	<meta content="{appdesc}" property="og:description">
+	<meta content="{appname}" property="og:site_name">
+	<script src="/js/register.js" type="module" defer></script>
+</head>
+<body>
+	<div class="container">
+		<h2 style="color: {accent_color}">{appname}</h2>
+		<div id="login-container">
+			<h1 id="login-title" style="margin-bottom: 15px;">
+				Register a<br>
+				{appname}-Account
+			</h1>
+			<form id="register">
+				<input type="text" id="username" placeholder="Username">
+				<input type="password" id="password" placeholder="Password">
+				<input type="password" id="password2" placeholder="Repeat Password">
+				<button>Register</button>
+			</form>
+		</div>
+		<div id="login">
+			<p>Already using {appname}?</p>
+			<a href="/login"><button>Login</button></a>
+		</div>
+	</div>
+</body>
+</html>
