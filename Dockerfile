@@ -10,6 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-VOLUME ["/apps"]
-
 CMD ["node", "."]
